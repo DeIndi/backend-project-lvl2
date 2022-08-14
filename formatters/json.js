@@ -1,0 +1,1 @@
+export const formatJson = (diffElems) => JSON.stringify(diffElems);

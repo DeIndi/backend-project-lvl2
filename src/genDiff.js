@@ -75,13 +75,14 @@ const genDiff = (file1, file2, formatter = 'stylish') => {
   const file2Content = fs.readFileSync(path.resolve(file2));
   const obj1 = parseData(file1Content, extension1);
   const obj2 = parseData(file2Content, extension2);
-  console.log(obj1);
-  console.log(obj2);
   if (formatter === 'stylish'){
     return (formatStylish(buildDiff(obj1, obj2)));
   }
   if (formatter === 'plain'){
     return (formatPlain(buildDiff(obj1, obj2)));
+  }
+  if (formatter === 'json'){
+    return (JSON.stringify(buildDiff(obj1, obj2)));
   }
 };
 

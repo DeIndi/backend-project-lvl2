@@ -27,7 +27,7 @@ const stringify = (value, initialIndentLevel = 1, replacer = '    ', spacesCount
   return stringifyInternal(value, initialIndentLevel);
 };
 
-const getStringFromDiffElem = (diffElem, indentLevel) => {
+const stringifyDiffElem = (diffElem, indentLevel) => {
   const indent = ' '.repeat(indentLevel * 4 - 2);
   if (diffElem.type === 'changed') {
     return [
@@ -46,7 +46,7 @@ const getStringFromDiffElem = (diffElem, indentLevel) => {
     const bracketIndent = ' '.repeat((indentLevel * 4));
     return [
       `${indent}  ${diffElem.key}: {`,
-      ...diffElems.flatMap((a) => getStringFromDiffElem(a, indentLevel + 1)),
+      ...diffElems.flatMap((a) => stringifyDiffElem(a, indentLevel + 1)),
       `${bracketIndent}}`,
     ]
   }
@@ -56,7 +56,7 @@ const getStringFromDiffElem = (diffElem, indentLevel) => {
 const formatStylish = (diffElems) => {
   return [
     '{',
-    ...diffElems.flatMap((a) => getStringFromDiffElem(a, 1)),
+    ...diffElems.flatMap((a) => stringifyDiffElem(a, 1)),
     '}'
   ].join('\n');
 };
