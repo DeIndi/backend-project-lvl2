@@ -12,7 +12,6 @@ cli.helpOption(true);
 cli.version('1.001');
 cli.option('-f, --format <type>', 'output format');
 cli.arguments('<filepath1>', '<filepath1>');
-const options = cli.opts();
 
 cli.parse(process.argv);
 

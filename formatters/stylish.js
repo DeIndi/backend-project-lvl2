@@ -1,6 +1,3 @@
-import _ from 'lodash';
-import { isObject } from 'util';
-
 const stringify = (value, initialIndentLevel = 1, replacer = '    ', spacesCount = 1) => {
   if (!replacer) {
     replacer = ' ';
@@ -19,7 +16,7 @@ const stringify = (value, initialIndentLevel = 1, replacer = '    ', spacesCount
     return [
       '{',
       ...properties.map(
-        ([key, value]) => `${indent}${key}: ${stringifyInternal(value, indentLevel + 1)}`,
+        ([key, val]) => `${indent}${key}: ${stringifyInternal(val, indentLevel + 1)}`,
       ),
       `${bracketIndent}}`,
     ].join('\n');
@@ -48,17 +45,15 @@ const stringifyDiffElem = (diffElem, indentLevel) => {
       `${indent}  ${diffElem.key}: {`,
       ...diffElems.flatMap((a) => stringifyDiffElem(a, indentLevel + 1)),
       `${bracketIndent}}`,
-    ]
+    ];
   }
   return `${indent}  ${diffElem.key}: ${diffElem.value}`;
 };
 
-const formatStylish = (diffElems) => {
-  return [
-    '{',
-    ...diffElems.flatMap((a) => stringifyDiffElem(a, 1)),
-    '}'
-  ].join('\n');
-};
+const formatStylish = (diffElems) => [
+  '{',
+  ...diffElems.flatMap((a) => stringifyDiffElem(a, 1)),
+  '}',
+].join('\n');
 
-export { formatStylish } ;
+export default formatStylish;

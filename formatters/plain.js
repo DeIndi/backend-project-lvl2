@@ -1,18 +1,17 @@
-import fs from 'node:fs';
 import _ from 'lodash';
 
 const stringify = (value) => {
-  if (_.isObject(value)){
+  if (_.isObject(value)) {
     return '[complex value]';
   }
-  if (_.isString(value)){
+  if (_.isString(value)) {
     return `'${value}'`;
   }
   return `${value}`;
 };
 
 const stringifyDiffElem = (diffElem, path = '') => {
-  if (_.isObject(diffElem.value)){
+  if (_.isObject(diffElem.value)) {
     path = '[complex value]';
   }
   if (diffElem.type === 'changed') {
@@ -26,15 +25,13 @@ const stringifyDiffElem = (diffElem, path = '') => {
   }
   if (diffElem.type === 'nested') {
     const diffElems = diffElem.children;
-    return diffElems.flatMap((a) => stringifyDiffElem(a, path + '.' + diffElem.key)).join('\n');
+    return diffElems.flatMap((a) => stringifyDiffElem(a, `${path}.${diffElem.key}`)).join('\n');
   }
   return [];
 };
 
-const formatPlain = (diffElems) => {
-  return [
-    ...diffElems.flatMap((a) => stringifyDiffElem(a, '')),
-  ].join('\n');
-};
+const formatPlain = (diffElems) => [
+  ...diffElems.flatMap((a) => stringifyDiffElem(a, '')),
+].join('\n');
 
-export { formatPlain } ;
+export default formatPlain;

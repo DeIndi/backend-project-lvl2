@@ -6,6 +6,7 @@
 
 This is the second project out of four, required for the node.js course.
 The program is expected to check and display difference between two files, containing JSON or yml objects. Each property of an object is prefixed with '+' if it was added, '-' if it was removed or nothing if it was left unchanged. If its value was changed, both old value with '-' prefix and new value with '+' prefix should be present.
+Program is supposed to work with plain and recursive objects. It also allows to choose difference display format - stylish or plain (-f key).
 
 ## Requirements
 
@@ -25,8 +26,10 @@ npm link
 ## Demos
 
 Demo of diff check 1 (Plain JSON objects)
+[![asciicast](https://asciinema.org/a/IP90ekxv10cBDlI9RAJIqIbJm.svg)](https://asciinema.org/a/IP90ekxv10cBDlI9RAJIqIbJm)
 
 Demo of diff check 2 (Plain yml objects)
+[![asciicast](https://asciinema.org/a/judaW6IrVbDGfgVcazd3T5vvx.svg)](https://asciinema.org/a/judaW6IrVbDGfgVcazd3T5vvx)
 
 Demo of diff check 3 (Recursive JSON objects)
 [![asciicast](https://asciinema.org/a/aTh36evu0q8ngwCrYgILaXANz.svg)](https://asciinema.org/a/aTh36evu0q8ngwCrYgILaXANz)
