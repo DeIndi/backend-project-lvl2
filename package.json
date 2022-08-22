@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/DeIndi/backend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/DeIndi/backend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "bin/genDiff.js",
   "type": "module",
   "scripts": {
     "test": "jest"
@@ -17,7 +17,7 @@
     "url": "https://github.com/DeIndi/backend-project-lvl2/issues"
   },
   "bin": {
-    "genDiff": "src/index.js"
+    "genDiff": "bin/genDiff.js"
   },
   "homepage": "https://github.com/DeIndi/backend-project-lvl2#readme",
   "dependencies": {

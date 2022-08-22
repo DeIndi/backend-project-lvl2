@@ -11,27 +11,24 @@ const stringify = (value) => {
 };
 
 const stringifyDiffElem = (diffElem, path = '') => {
-  if (_.isObject(diffElem.value)) {
-    path = '[complex value]';
-  }
   if (diffElem.type === 'changed') {
-    return `Property ${path} was updated. From ${stringify(diffElem.value1)} to ${stringify(diffElem.value2)}`;
+    return `Property '${path}' was updated. From ${stringify(diffElem.value1)} to ${stringify(diffElem.value2)}`;
   }
   if (diffElem.type === 'removed') {
-    return `Property ${path} was removed`;
+    return `Property '${path}' was removed`;
   }
   if (diffElem.type === 'added') {
-    return `Property ${path} was added with value: ${stringify(diffElem.value)}`;
+    return `Property '${path}' was added with value: ${stringify(diffElem.value2)}`;
   }
   if (diffElem.type === 'nested') {
     const diffElems = diffElem.children;
-    return diffElems.flatMap((a) => stringifyDiffElem(a, `${path}.${diffElem.key}`)).join('\n');
+    return diffElems.flatMap((a) => stringifyDiffElem(a, `${path}.${a.key}`)).join('\n');
   }
   return [];
 };
 
 const formatPlain = (diffElems) => [
-  ...diffElems.flatMap((a) => stringifyDiffElem(a, '')),
+  ...diffElems.flatMap((a) => stringifyDiffElem(a, a.key)),
 ].join('\n');
 
 export default formatPlain;

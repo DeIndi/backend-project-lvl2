@@ -52,8 +52,6 @@ test('CorrectInputNestedJSON', () => {
     }
 }`;
 
-  const dirPath = '_fixtures_';
-
   const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
   expect(result).toEqual(expected);
 });
@@ -103,8 +101,6 @@ test('CorrectInputYaml', () => {
         fee: 100500
     }
 }`;
-
-  const dirPath = '_fixtures_';
 
   const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
   expect(result).toEqual(expected);

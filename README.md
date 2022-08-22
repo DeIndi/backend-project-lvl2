@@ -2,7 +2,6 @@
 
 [![Actions Status](https://github.com/DeIndi/backend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/DeIndi/backend-project-lvl2/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/090084e3341710243205/maintainability)](https://codeclimate.com/github/DeIndi/backend-project-lvl2/maintainability)
-[![Node CI](https://github.com/DeIndi/backend-project-lvl1/actions/workflows/nodejs.yml/badge.svg)](https://github.com/DeIndi/backend-project-lvl1/actions/workflows/nodejs.yml)
 
 This is the second project out of four, required for the node.js course.
 The program is expected to check and display difference between two files, containing JSON or yml objects. Each property of an object is prefixed with '+' if it was added, '-' if it was removed or nothing if it was left unchanged. If its value was changed, both old value with '-' prefix and new value with '+' prefix should be present.
