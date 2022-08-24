@@ -2,6 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/DeIndi/backend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/DeIndi/backend-project-lvl2/actions)",
+  "main": "src/genDiff.js",
   "type": "module",
   "scripts": {
     "test": "jest"
