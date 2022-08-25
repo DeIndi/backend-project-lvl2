@@ -6,7 +6,7 @@ import formatStylish from '../formatters/stylish.js';
 import formatPlain from '../formatters/plain.js';
 
 const buildDiff = (obj1, obj2) => {
-  const keys = _.union(_.keys(obj1), _.keys(obj2)).sort(); // Array<string>
+  const keys = _.sortBy(_.union(_.keys(obj1), _.keys(obj2))); // Array<string>
   const build = (key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
