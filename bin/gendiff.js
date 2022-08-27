@@ -15,5 +15,3 @@ cli.action((filepath1, filepath2, options) => {
   console.log(genDiff(filepath1, filepath2, options.format));
 });
 cli.parse(process.argv);
-
-// console.log(genDiff(process.argv[2], process.argv[3], cli.opts().format));
