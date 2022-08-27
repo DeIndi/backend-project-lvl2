@@ -144,10 +144,8 @@ test('CorrectInputYaml', () => {
   expect(result).toEqual(expected);
 });
 
-
 test('CorrectInputPlainFormatter', () => {
-  const expected = 
-`Property 'common.follow' was added with value: false
+  const expected = `Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to [complex value]
 Property 'common.setting4' was added with value: 'blah blah'
