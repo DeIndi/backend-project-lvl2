@@ -17,7 +17,7 @@
     "url": "https://github.com/DeIndi/backend-project-lvl2/issues"
   },
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "genDiff": "bin/gendiff.js"
   },
   "homepage": "https://github.com/DeIndi/backend-project-lvl2#readme",
   "dependencies": {
