@@ -8,8 +8,8 @@ import buildDiff from './buildDiff.js';
 const formatterOption = {
   stylish: formatStylish,
   plain: formatPlain,
-  json: JSON.stringify
-}
+  json: JSON.stringify,
+};
 
 const genDiff = (file1, file2, formatter = 'stylish') => {
   const extension1 = path.extname(file1);
