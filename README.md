@@ -22,7 +22,7 @@ To install this project, use following commands:
 git clone https://github.com/DeIndi/backend-project-lvl2
 cd backend-project-lvl2
 make install
-npm link
+make link
 ```
 ## Demos
 
