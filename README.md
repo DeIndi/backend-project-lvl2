@@ -27,17 +27,17 @@ npm link
 ## Demos
 
 Demo of diff check 1 (Plain JSON objects)
-[![asciicast](https://asciinema.org/a/IP90ekxv10cBDlI9RAJIqIbJm.svg)](https://asciinema.org/a/IP90ekxv10cBDlI9RAJIqIbJm)
+[![asciicast](https://asciinema.org/a/5GYpa4JiPZSCsdhCEzyphpJ3e.svg)](https://asciinema.org/a/5GYpa4JiPZSCsdhCEzyphpJ3e)
 
 Demo of diff check 2 (Plain yml objects)
-[![asciicast](https://asciinema.org/a/judaW6IrVbDGfgVcazd3T5vvx.svg)](https://asciinema.org/a/judaW6IrVbDGfgVcazd3T5vvx)
+[![asciicast](https://asciinema.org/a/q215zwdBJDRolLTaV8Piv2INT.svg)](https://asciinema.org/a/q215zwdBJDRolLTaV8Piv2INT)
 
 Demo of diff check 3 (Recursive JSON objects)
-[![asciicast](https://asciinema.org/a/aTh36evu0q8ngwCrYgILaXANz.svg)](https://asciinema.org/a/aTh36evu0q8ngwCrYgILaXANz)
+[![asciicast](https://asciinema.org/a/jpmyCt1rczCtJ9ys55lfArxaO.svg)](https://asciinema.org/a/jpmyCt1rczCtJ9ys55lfArxaO)
 
 Demo of diff check 4 (Plain formatter)
-[![asciicast](https://asciinema.org/a/8dBM3GOvzfWbQqQOMJAr83Bv8.svg)](https://asciinema.org/a/8dBM3GOvzfWbQqQOMJAr83Bv8)
+[![asciicast](https://asciinema.org/a/m528hJUU1gB5kQEpl8w6cXL4W.svg)](https://asciinema.org/a/m528hJUU1gB5kQEpl8w6cXL4W)
 
 Demo of diff check 4 (JSON formatter)
-[![asciicast](https://asciinema.org/a/BcUT6CVGs6s7ql06JqVSWWhIB.svg)](https://asciinema.org/a/BcUT6CVGs6s7ql06JqVSWWhIB)
+[![asciicast](https://asciinema.org/a/AmglcIOLUrfRgv4iD4jjcHFZX.svg)](https://asciinema.org/a/AmglcIOLUrfRgv4iD4jjcHFZX)
 
