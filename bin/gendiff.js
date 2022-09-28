@@ -4,7 +4,7 @@ import genDiff from '../src/genDiff.js';
 
 const cli = new Command();
 cli.description('Compares two configuration files and shows a difference.');
-// cli.name('genDiff');
+// fluent interface
 cli.usage('[options] <filepath1> <filepath2>');
 cli.addHelpCommand(false);
 cli.helpOption(true);

@@ -7,20 +7,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
 
-test('CorrectInputNestedJSON', () => {
-  const expected = readFileSync(getFixturePath('result_stylish.txt'), 'utf-8').trim();
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
-  expect(result).toEqual(expected);
-});
+const expectedOption = {
+  stylish: readFileSync(getFixturePath('result_stylish.txt'), 'utf-8').trim(),
+  plain: readFileSync(getFixturePath('result_plain.txt'), 'utf-8').trim(),
+};
 
-test('CorrectInputYaml', () => {
-  const expected = readFileSync(getFixturePath('result_stylish.txt'), 'utf-8').trim();
-  const result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
-  expect(result).toEqual(expected);
-});
+const extensions = ['json', 'yml'];
 
-test('CorrectInputPlainFormatter', () => {
-  const expected = readFileSync(getFixturePath('result_plain.txt'), 'utf-8').trim();
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
-  expect(result).toEqual(expected);
+describe('gendiff different input', () => {
+  extensions.forEach((e) => {
+    test.each([
+      [`file1.${e}`, `file2.${e}`, 'stylish'],
+      [`file1.${e}`, `file2.${e}`, 'plain'],
+    ])('%s and %s with %s format', (filePath1, filePath2, expectedVar) => {
+      const fixture1 = getFixturePath(filePath1);
+      const fixture2 = getFixturePath(filePath2);
+      const expected = expectedOption[expectedVar];
+      const result = (expectedVar === 'plain') ? genDiff(fixture1, fixture2, 'plain') : genDiff(fixture1, fixture2);
+      expect(result).toEqual(expected);
+    });
+  });
 });

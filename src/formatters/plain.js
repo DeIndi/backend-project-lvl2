@@ -10,25 +10,16 @@ const stringify = (value) => {
   return `${value}`;
 };
 
-const stringifyDiffElem = (diffElem, path = '') => {
-  if (diffElem.type === 'changed') {
-    return `Property '${path}' was updated. From ${stringify(diffElem.value1)} to ${stringify(diffElem.value2)}`;
-  }
-  if (diffElem.type === 'removed') {
-    return `Property '${path}' was removed`;
-  }
-  if (diffElem.type === 'added') {
-    return `Property '${path}' was added with value: ${stringify(diffElem.value2)}`;
-  }
-  if (diffElem.type === 'nested') {
-    const diffElems = diffElem.children;
-    return diffElems.flatMap((a) => stringifyDiffElem(a, `${path}.${a.key}`)).join('\n');
-  }
-  return [];
+const stringifyDiffElemOption = {
+  changed: (diffElem, path = '') => `Property '${path}' was updated. From ${stringify(diffElem.value1)} to ${stringify(diffElem.value2)}`,
+  removed: (diffElem, path = '') => `Property '${path}' was removed`,
+  added: (diffElem, path = '') => `Property '${path}' was added with value: ${stringify(diffElem.value2)}`,
+  nested: (diffElem, path = '') => diffElem.children.flatMap((a) => stringifyDiffElemOption[a.type](a, `${path}.${a.key}`)).join('\n'),
+  unchanged: () => [],
 };
 
 const formatPlain = (diffElems) => [
-  ...diffElems.flatMap((a) => stringifyDiffElem(a, a.key)),
+  ...diffElems.flatMap((a) => stringifyDiffElemOption[a.type](a, a.key)),
 ].join('\n');
 
 export default formatPlain;
