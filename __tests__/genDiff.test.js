@@ -12,7 +12,9 @@ const expectedOption = {
   plain: readFileSync(getFixturePath('result_plain.txt'), 'utf-8').trim(),
 };
 
-const extensions = ['json', 'yml'];
+const extensions = [
+  'json', 'yml',
+];
 
 describe('gendiff different input', () => {
   extensions.forEach((e) => {
