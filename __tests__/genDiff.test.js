@@ -15,13 +15,13 @@ const formatsToTest = [
 const resultFormats = [
   'stylish',
   'plain',
-  'json'
+  'json',
 ];
 
 const expectedOption = {
   stylish: readFileSync(getFixturePath('result_stylish.txt'), 'utf-8').trim(),
   plain: readFileSync(getFixturePath('result_plain.txt'), 'utf-8').trim(),
-  json: readFileSync(getFixturePath('result_json.txt'), 'utf-8').trim()
+  json: readFileSync(getFixturePath('result_json.txt'), 'utf-8').trim(),
 };
 
 describe('gendiff', () => {
