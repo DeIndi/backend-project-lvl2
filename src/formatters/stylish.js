@@ -15,7 +15,7 @@ const stringify = (value, initialIndentLevel = 1) => {
       ...properties.map(
         ([k, v]) => `${getIndent(indentLevel)}  ${k}: ${stringifyInternal(v, indentLevel + 1)}`,
       ),
-      `${getIndent(indentLevel-1)}  }`,
+      `${getIndent(indentLevel - 1)}  }`,
     ].join('\n');
   };
   return stringifyInternal(value, initialIndentLevel);
