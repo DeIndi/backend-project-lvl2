@@ -1,28 +1,25 @@
 import _ from 'lodash';
 
-const stringify = (value, initialIndentLevel = 1, spacesCount = 1) => {
+const indentSize = 4;
+const markerSize = 2;
+const getIndent = (indentLevel) => ' '.repeat(indentLevel * indentSize - markerSize);
+
+const stringify = (value, initialIndentLevel = 1) => {
   const stringifyInternal = (val, indentLevel = initialIndentLevel) => {
-    if (!_.isObject(val) || val === null) {
+    if (!_.isObject(val) || _.isNull(val)) {
       return String(val);
     }
-    const indent = '    '.repeat(indentLevel * spacesCount);
-    const bracketIndent = '    '.repeat((indentLevel - 1) * spacesCount);
-    const properties = Object.entries(val);
+    const properties = _.entries(val);
     return [
       '{',
       ...properties.map(
-        ([k, v]) => `${indent}${k}: ${stringifyInternal(v, indentLevel + 1)}`,
+        ([k, v]) => `${getIndent(indentLevel)}  ${k}: ${stringifyInternal(v, indentLevel + 1)}`,
       ),
-      `${bracketIndent}}`,
+      `${getIndent(indentLevel-1)}  }`,
     ].join('\n');
   };
   return stringifyInternal(value, initialIndentLevel);
 };
-
-const indentSize = 4;
-const markerSize = 2;
-const getIndent = (indentLevel) => ' '.repeat(indentLevel * indentSize - markerSize);
-const getBracketIndent = (indentLevel) => ' '.repeat(indentLevel * indentSize);
 
 const stringifyDiffElemOption = {
   changed: ({ key, value1, value2 }, indentLevel) => [
@@ -38,7 +35,7 @@ const stringifyDiffElemOption = {
     return [
       `${getIndent(indentLevel)}  ${key}: {`,
       ...diffElems.flatMap((a) => stringifyDiffElemOption[a.type](a, indentLevel + 1)),
-      `${getBracketIndent(indentLevel)}}`,
+      `${getIndent(indentLevel)}  }`,
     ];
   },
   unchanged: ({ key, value2 }, indentLevel) => `${getIndent(indentLevel)}  ${key}: ${value2}`,
