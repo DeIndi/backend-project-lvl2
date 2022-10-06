@@ -5,7 +5,9 @@ import genDiff from '../src/genDiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (fileName) => join(__dirname, '..', '__fixtures__', fileName);
+
+const readFileContent = (fileName) => readFileSync(getFixturePath(fileName), 'utf-8').trim();
 
 const formatsToTest = [
   'yml',
@@ -19,9 +21,9 @@ const resultFormats = [
 ];
 
 const expectedOption = {
-  stylish: readFileSync(getFixturePath('result_stylish.txt'), 'utf-8').trim(),
-  plain: readFileSync(getFixturePath('result_plain.txt'), 'utf-8').trim(),
-  json: readFileSync(getFixturePath('result_json.txt'), 'utf-8').trim(),
+  stylish: readFileContent('result_stylish.txt'),
+  plain: readFileContent('result_plain.txt'),
+  json: readFileContent('result_json.txt'),
 };
 
 describe('gendiff', () => {
