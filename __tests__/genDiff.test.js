@@ -7,25 +7,34 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
 
+const formatsToTest = [
+  'yml',
+  'json',
+];
+
+const resultFormats = [
+  'stylish',
+  'plain',
+];
+
 const expectedOption = {
   stylish: readFileSync(getFixturePath('result_stylish.txt'), 'utf-8').trim(),
   plain: readFileSync(getFixturePath('result_plain.txt'), 'utf-8').trim(),
 };
 
-const extensions = [
-  'json', 'yml',
-];
+describe('gendiff', () => {
+  describe.each(formatsToTest)('для формата %s', (format) => {
+    const fixture1 = getFixturePath(`file1.${format}`);
+    const fixture2 = getFixturePath(`file2.${format}`);
+    it('результат по-умолчанию stylish', () => {
+      const expected = expectedOption.stylish;
+      const result = genDiff(fixture1, fixture2);
+      expect(result).toEqual(expected);
+    });
 
-describe('gendiff different input', () => {
-  extensions.forEach((e) => {
-    test.each([
-      [`file1.${e}`, `file2.${e}`, 'stylish'],
-      [`file1.${e}`, `file2.${e}`, 'plain'],
-    ])('%s and %s with %s format', (filePath1, filePath2, expectedVar) => {
-      const fixture1 = getFixturePath(filePath1);
-      const fixture2 = getFixturePath(filePath2);
-      const expected = expectedOption[expectedVar];
-      const result = (expectedVar === 'plain') ? genDiff(fixture1, fixture2, 'plain') : genDiff(fixture1, fixture2);
+    it.each(resultFormats)('результат %s', (resultKey) => {
+      const result = genDiff(fixture1, fixture2, resultKey);
+      const expected = expectedOption[resultKey];
       expect(result).toEqual(expected);
     });
   });
