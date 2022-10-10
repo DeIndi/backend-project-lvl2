@@ -1,7 +1,7 @@
 lint:
 	npx eslint .
 install:
-	npm install
+	npm ci
 test:
 	npx jest
 test_coverage:
