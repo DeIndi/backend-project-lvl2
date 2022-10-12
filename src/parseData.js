@@ -8,6 +8,6 @@ const parsers = {
 
 const getParser = (format) => parsers[format];
 
-const parse = (fileContent, format = 'json') => (fileContent !== '' ? getParser(format)(fileContent) : {});
+const parse = (fileContent, format = 'json') => getParser(format)(fileContent);
 
 export default parse;
