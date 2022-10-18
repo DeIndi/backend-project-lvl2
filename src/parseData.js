@@ -6,8 +6,6 @@ const parsers = {
   yaml: yaml.load,
 };
 
-const getParser = (format) => parsers[format];
-
-const parse = (fileContent, format = 'json') => getParser(format)(fileContent);
+const parse = (fileContent, format = 'json') => parsers[format](fileContent);
 
 export default parse;
